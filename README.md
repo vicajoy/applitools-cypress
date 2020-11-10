@@ -10,8 +10,8 @@ The project uses the following packages:
 
 ## Project Structure
 
-* The project includes two types of tests - traditional. 
-* TODO: the visual tests which will utilize Applitools Eyes SDK.
+* The project includes two types of tests - traditional and visual. 
+* The visual tests utilize Applitools Eyes SDK.
 
 ## Author
 * Vica Markosyan

@@ -5,80 +5,78 @@ context('Login Form Test', () => {
       cy.visit('https://demo.applitools.com/hackathon.html')
     })
   
-    it('Page title is correct', () => {
+    it('Displays page title correctly', () => {
       cy.get('.auth-header')
         .should('contain', 'Login Form')
     })
   
-    it('Username label is correct', () => {
+    it('Displays username label correctly', () => {
       cy.get('#username').parent().find('label')
         .should('contain', 'Username')
     })
 
-    it('Password label is correct', () => {
+    it('Displays password label correctly', () => {
         cy.get('#password').parent().find('label')
           .should('contain', 'Password')
     })
 
-    it('Username icon is present', () => {
+    it('Displays username icon', () => {
         cy.get('.os-icon-user-male-circle')
         .should('be.visible')
     })
 
-    it('Password icon is present', () => {
+    it('Displays password icon', () => {
         cy.get('.os-icon-fingerprint')
         .should('be.visible')
     })
 
-    it('Remember Me checkbox is present', () => {
+    it('Displays Remember Me checkbox', () => {
         cy.get('.form-check-label')
         .should('be.visible')
     })
 
-    it('Twitter checkbox is present', () => {
+    it('Displays Twitter icon', () => {
         cy.get('img[src="img/social-icons/twitter.png"]')
         .should('be.visible')
     })
 
-    it('Facebook checkbox is present', () => {
+    it('Diplays Facebook icon', () => {
         cy.get('img[src="img/social-icons/facebook.png"]')
         .should('be.visible')
     })
 
-    it('Linkedin checkbox is present', () => {
+    it('Displays Linkedin icon', () => {
         cy.get('img[src="img/social-icons/linkedin.png"]')
         .should('be.visible')
     })
-
 
 context('Data Driven Test', () => {
     before(() => {
         cy.visit('https://demo.applitools.com/hackathon.html')
     })
-      
         
-    it('Username and password are not entered', () => {
+    it('Shows message that username and password are not entered', () => {
         cy.get('#username').clear()
         cy.get('#password').clear()
         cy.get('#log-in').click()
         cy.get('.alert-warning').should('contain', 'Both Username and Password must be present')
     })
       
-    it('Password is not entered', () => {
+    it('Shows message that username is not entered', () => {
         cy.get('#username').clear().type('aaa')
         cy.get('#password').clear()
         cy.get('#log-in').click()
         cy.get('.alert-warning').should('contain', 'Password must be present')
     })
     
-    it('Username is not entered', () => {
+    it('Shows message that password is not entered', () => {
         cy.get('#username').clear()
         cy.get('#password').clear().type('aaa')
         cy.get('#log-in').click()
         cy.get('.alert-warning').should('contain', 'Username must be present')
         })
     
-    it('Username and password are entered', () => {
+    it('Navigates to home page after successful login', () => {
         cy.get('#username').clear().type('aaa')
         cy.get('#password').clear().type('aaa')
         cy.get('#log-in').click()
@@ -88,8 +86,7 @@ context('Data Driven Test', () => {
 })
 
 context('Table Sort Test', () => {
-
-    it('Table amounts are sorted ascending', () => {
+    it('Shows table amounts sorted in ascending order', () => {
         cy.visit('https://demo.applitools.com/hackathon.html')
         cy.get('#username').clear().type('aaa')
         cy.get('#password').clear().type('aaa')
@@ -99,6 +96,7 @@ context('Table Sort Test', () => {
         cy.get("td[class='text-right bolder nowrap']").find('span').each(element => {
             sortedListofAmounts.push(element)
         })
+        
         sortedListofAmounts.sort()
 
         cy.get("#amount").click()
